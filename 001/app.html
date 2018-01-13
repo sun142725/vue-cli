@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <div v-on:click="handelClick">点击</div>
+    <ul>
+        <li v-for="(v,i) in list">
+            <span>{{v.name}}</span>
+            <span>{{v.price}}</span>
+            <span v-on:click="handelDelete(i)">删除</span>
+        </li>
+    </ul>
+    <div>{{total}}</div>
+
+
+
+</div>
+</body>
+</html>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            list:[{id:1,name:'1',num:1,price:12},
+                {id:2,name:'1',num:2,price:12},
+                {id:3,name:'1',num:1,price:12}]
+        },
+        methods:{
+            handelClick:function(){
+               this.list.push({id:4,name:'4',num:3,price:15})
+            },
+            handelDelete:function(index){
+                this.list.splice(index,1)
+            }
+        },
+        computed:{
+            total:function(){
+                let t=0;
+                this.list.forEach(v=>t+=v.price*v.num);
+                return t;
+            }
+        },
+        watch:{
+         list:function(){
+             localStorage.list=JSON.stringify(this.list)
+         }
+        },
+        mounted:function(){
+            this.list=JSON.parse(localStorage.list)
+        }
+
+    })
+</script>

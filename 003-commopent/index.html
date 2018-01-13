@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+<div id="app">
+    <!--<app-button v-on:x="y" size="size" color="red"></app-button>-->
+    <button v-on:show-type="show" :class="'btn btn-'+v">login</button>
+    <panel v-on:show-type="show" type="success" title="add">
+        <div slot="a">123</div>
+    </panel>
+    <panel v-on:show-type="show" type="info" title="list">
+        <div slot="a">456</div>
+    </panel>
+</div>
+</div>
+</body>
+</html>
+<script>
+  /* Vue.component('app-button',{
+       template:'<div v-on:click="handel" :class="size">{{color}}</div>',
+       props:{
+           size:String,
+           color:String
+       },
+       methods:{
+           handel:function(){
+               this.$emit('x',Math.random())
+           }
+       }
+   });
+*/
+   Vue.component('panel',{
+      template:`
+       <div :class="'panel panel-'+type">
+            <div v-on:click="handel(type)" class="panel-heading">{{title}}</div>
+            <div class="panel-body">
+               <slot name="a"></slot>
+               <slot name="b"></slot>
+            </div>
+    </div>
+      `,
+       props:{
+          type:String,
+          title:String
+       },
+       methods:{
+          handel:function(type){
+              this.$emit('show-type',type)
+          }
+       },
+   });
+    var app=new Vue({
+        el:'#app',
+        data:{
+         v:'default'
+        },
+        methods:{
+            y:function(t){
+                alert(t)
+            },
+            show:function(type){
+              alert(type)
+            }
+        }
+    })
+</script>

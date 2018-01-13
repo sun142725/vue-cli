@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!-- <div v-text="message">
+     </div>
+     &lt;!&ndash;文本&ndash;&gt;
+     <div v-html="el">
+     </div>
+     &lt;!&ndash;纯HTML&ndash;&gt;
+
+     <div v-bind:class="'abc'"></div>
+     &lt;!&ndash; 属性&ndash;&gt;
+
+     <div>{{ number + 1 }}</div>
+     <div>{{ ok ? 'YES' : 'NO' }}</div>
+     <div>{{ message.split('').reverse().join('') }}</div>
+     &lt;!&ndash;javascript表达式&ndash;&gt;
+
+
+     <div v-if="show>10">10</div>
+     <div v-else-if="show>5">5</div>
+     <div v-else>0</div>
+
+     <a v-bind:href="'url'">.....</a>
+     <a :href="url"></a>
+    &lt;!&ndash; 指令&ndash;&gt;
+
+
+
+     <div v-on:click.prevent="handelClick">点击我</div>
+     <form v-on:submit.prevent="onSubmit"></form>&lt;!&ndash;修饰符&ndash;&gt;
+     <a @click="doSomething"></a>&lt;!&ndash;缩写&ndash;&gt;
+     &lt;!&ndash;事件&ndash;&gt;
+
+     <div>{{ message | filterA | filterB }}</div> <!--过滤器-->
+
+    <!--<p>{{manager}}</p>
+    <p>{{reversedMessage()}}</p>-->
+
+
+    <!--<div>{{ fullName }}</div>-->
+
+
+    <!--  对象语法-->
+    <!-- <div v-bind:class="{ active: isActive }"></div>
+     <div v-bind:class="classObject"></div>
+
+     &lt;!&ndash;  数组语法&ndash;&gt;
+     <div v-bind:class="[activeClass, errorClass]">
+     <div v-bind:class="[isActive ? activeClass : '', errorClass]">
+
+
+ &lt;!&ndash;绑定内联样式&ndash;&gt;
+         <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+         <div v-bind:style="styleObject"></div>
+         &lt;!&ndash;数组语法&ndash;&gt;
+         <div v-bind:style="[baseStyles, overridingStyles]"></div>-->
+
+   <!-- <div v-if="Math.random() > 0.5">
+        1
+    </div>
+    <div v-else>
+        0
+    </div>
+
+
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+
+
+
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+    </template>
+
+
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+    </template>
+
+
+    <h1 v-show="ok">Hello!</h1>
+-->
+
+   <!-- <ul id="example-1">
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+    </ul>
+
+    <ul id="example-2">
+        <li v-for="(item, index) in items">
+            {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+    </ul>
+
+    <ul>
+        <template v-for="item in items">
+            <li>{{ item.msg }}</li>
+            <li class="divider"></li>
+        </template>
+    </ul>
+
+    <ul id="repeat-object" class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+
+    <div v-for="(value, key, index) in object">
+        {{ index }}. {{ key }} : {{ value }}
+    </div>
+
+
+    <div>
+        <span v-for="n in 10">{{ n }} </span>
+    </div>
+
+
+    <li v-for="todo in todos" v-if="!todo.isComplete">
+        {{ todo }}
+    </li>
+
+   &lt;!&ndash; <ul v-if="shouldRenderTodos">
+        <li v-for="todo in todos">
+            {{ todo }}
+        </li>
+    </ul>&ndash;&gt;
+
+    <div v-for="item in ite" :key="item.id">
+        {{item.name}}
+    </div>
+
+    <li v-for="n in even(numbers)">{{ n }}</li>
+-->
+
+   <!-- <button v-on:click="counter += 1">增加 1</button>
+    <p>这个按钮被点击了 {{ counter }} 次。</p>
+
+    <button v-on:click="greet">Greet</button>
+
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+    </button>
+
+    <a v-on:click.stop="doThis"></a>s
+    &lt;!&ndash; 提交事件不再重载页面 &ndash;&gt;
+    <form v-on:submit.prevent="onSubmit"></form>
+    &lt;!&ndash; 修饰符可以串联  &ndash;&gt;
+    <a v-on:click.stop.prevent="doThat"></a>
+    &lt;!&ndash; 只有修饰符 &ndash;&gt;
+    <form v-on:submit.prevent></form>
+    &lt;!&ndash; 添加事件侦听器时使用事件捕获模式 &ndash;&gt;
+    <div v-on:click.capture="doThis">...</div>
+    &lt;!&ndash; 只当事件在该元素本身（比如不是子元素）触发时触发回调 &ndash;&gt;
+    <div v-on:click.self="doThat">...</div>
+
+    &lt;!&ndash; 点击事件将只会触发一次 &ndash;&gt;
+    <a v-on:click.once="doThis"></a>
+
+    <input v-on:keyup.enter="submit">
+    &lt;!&ndash; 缩写语法 &ndash;&gt;
+    <input @keyup.enter="submit">
+-->
+
+
+<!--表单-->
+    <!--//#文本-->
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+
+    <!--多行文本-->
+    <span>Multine message is:</span>
+    <p style="white-space:pre-line">{{message}}</p>
+    <br>
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+
+    <!--复选框-->
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checked">{{checked}}</label>
+
+    <input type="checkbox" id="jhon" value="jhon" v-model="checkedNames">
+    <label for="jhon">jhon</label>
+    <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+    <label for="jack">jack</label>
+    <input type="checkbox" id="mike" value="mike" v-model="checkedNames">
+    <label for="mike">mike</label>
+
+    <!--单选按钮-->
+    <input type="radio" id="one" value="one" v-model="picked">
+    <label for="one">one</label>
+    <input type="radio" id="two" value="two" v-model="picked">
+    <label for="two">two</label>
+    <br>
+    <span>Picked:{{picked}}</span>
+
+    <!--选择列表-->
+    <!--单选列表-->
+    <select v-model="selected">
+        <option disabled   value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected:{{selected}}</span>
+
+
+    <!--<select v-model="selected" multiple style="width: 50px">-->
+    <!--<option>A</option>-->
+    <!--<option>B</option>-->
+    <!--<option>C</option>-->
+    <!--</select>-->
+    <!--<br>-->
+    <!--<span>Selected: {{ selected }}</span>-->
+
+    <select v-model="selecte">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selecte: {{ selecte }}</span>
+
+    <input
+            type="checkbox"
+            v-model="toggle"
+            v-bind:true-value="a"
+            v-bind:false-value="b"
+    >
+
+</div>
+</body>
+</html>
+<script>
+    //1.属性与方法
+    //   var data={a:1};
+    /*  var vm=new Vue({
+     data:data
+     })
+     vm.a===data.a
+
+     vm.a=2;
+     console.log(data.a);*/
+
+    //除了 data 属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 $，以便与代理的 data 属性区分
+    /*var v=new Vue({
+     el:'#app',
+     data:data
+     })
+     v.$data===data;
+     v.$el === document.getElementById('app')
+
+     v.$watch('a', function (newVal, oldVal) {
+     console.log(1)
+     // 这个回调将在 `vm.a`  改变后调用
+     })*/
+
+
+    //2.实例生命周期
+    /*var vm = new Vue({
+     data: {
+     a: 1
+     },
+     created: function () {
+     console.log('a is: ' + this.a)
+     }
+     //在实例被创建后调用
+     })*/
+
+    //3.模板语法
+
+    /*
+     var app=new Vue({
+     el:'#app',
+     data:{
+     message:'hello',
+     list:[{name:'aa'},{password:123}],
+     el:'<span>123</span>',
+     show:7,
+     t:'aaa',
+     number:2,
+     ok:true,
+     url:'http://www.baidu.com'
+
+
+     },
+     methods:{
+     handelClick:function(){
+     this.message='word';
+     },
+     handelKeyup:function(e){
+     this.t=e.target.value;
+     }
+     },
+     /!* filters: {
+     capitalize: function (value) {
+     if (!value) return '';
+     value = value.toString();
+     return value.charAt(0).toUpperCase() + value.slice(1)
+     }
+     }*!/
+
+     })*/
+
+    //4.计算属性
+    /*
+     var v=new Vue({
+     el:'#app',
+     data:{
+     manager:'hello',
+     firstName: 'Foo',
+     lastName: 'Bar',
+     fullName: 'Foo Bar'
+     },
+     /!* computed:{
+     reverseManager:function(){
+     return this.message.split('').reverse().join('')
+     }
+     },*!/
+     //    计算属性 vs methods
+     /!* methods: {
+     reversedMessage: function () {
+     return this.message.split('').reverse().join('')
+     }
+     },*!/
+     watch: {
+     firstName: function (val) {
+     this.fullName = val + ' ' + this.lastName
+     },
+     lastName: function (val) {
+     this.fullName = this.firstName + ' ' + val
+     }
+     },
+     computed: {
+     /!* fullName: function () {
+     return this.firstName + ' ' + this.lastName
+     },*!/
+     fullName: {
+     // getter
+     get: function () {
+     return this.firstName + ' ' + this.lastName
+     },
+     // setter
+     set: function (newValue) {
+     var names = newValue.split(' ')
+     this.firstName = names[0]
+     this.lastName = names[names.length - 1]
+     }
+     }
+     }
+     })*/
+
+    //5.Class 与 Style 绑定
+    /*var v=new Vue({
+     el:'#app',
+     data: {
+     isActive: true,
+     hasError: false,
+     error: null,
+     classObject: {
+     active: true,
+     'text-danger': false
+     },
+     activeClass: 'active',
+     errorClass: 'text-danger',
+
+     activeColor: 'red',
+     fontSize: 30,
+     styleObject: {
+     color: 'red',
+     fontSize: '13px'
+     }
+     },
+     computed: {
+     classObject: function () {
+     return {
+     active: this.isActive && !this.error,
+     'text-danger': this.error && this.error.type === 'fatal',
+     }
+     }
+     }
+     })*/
+
+    //6.条件渲染
+    /*var v=new Vue({
+        el:'#app',
+        data:{
+            type:'A',
+            loginType:'username',
+            ok:'1'
+        }
+    })*/
+
+//    7.列表渲染
+   /* var v=new Vue({
+     el:'#app',
+     data:{
+     parentMessage: 'Parent',
+     items: [
+     {message: 'Foo' },
+     {message: 'Bar' }
+     ],
+     object: {
+     firstName: 'John',
+     lastName: 'Doe',
+     age: 30
+     },
+     todos:{
+     isComplete:false,
+     con:true
+     },
+     ite: [
+     {id:1,name:'a'},
+     {id:2,name:'b'}
+     ],
+     numbers: [ 1, 2, 3, 4, 5 ]
+     },
+     computed: {
+     evenNumbers: function () {
+     return this.numbers.filter(function (number) {
+     return number % 2 === 0
+     })
+     }
+     },
+     methods: {
+     even: function (numbers) {
+     return numbers.filter(function (number) {
+     return number % 2 === 0
+     })
+     }
+     }
+     })
+
+     /!* push()
+     pop()
+     shift()
+     unshift()
+     splice()
+     sort()
+     reverse()*!/
+
+     v.items[indexOfItem] = newValue;
+     v.items.length = newLength;
+     v.items=v.items.filter(function(item){
+     return item.message.match(/Foo/)
+     });
+     console.log(v.items)
+
+     Vue.set(v.items, indexOfItem, newValue)
+     v.items.splice(indexOfItem, 1, newValue)
+     v.items.splice(newLength)
+     */
+
+//   8.事件处理器
+/*
+    var v = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            name:Vue.js
+        },
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            } ,
+            say: function (message) {
+                alert(message)
+            },
+            warn: function (message, event) {
+                // 现在我们可以访问原生事件对象
+                if (event) event.preventDefault()
+                alert(message)
+            }
+        },
+
+    })
+   v.greet()*/
+
+//9.表单控件绑定
+  /*var v=new Vue({
+      el:'#app',
+      data:{
+          checkedNames: [],
+          picked: '',
+          selected: '',
+          selected: [],
+          selected: 'A',
+          options: [
+              { text: 'One', value: 'A' },
+              { text: 'Two', value: 'B' },
+              { text: 'Three', value: 'C' }
+          ]
+      }
+
+  })*/
+
+
+
+
+
+
+</script>
